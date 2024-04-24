@@ -1,0 +1,38 @@
+services:
+  db:
+    container_name: project_db
+    image: postgres:bookworm
+    restart: always
+    shm_size: 128mb
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./.docker/postgres/data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: app_db
+      POSTGRES_PASSWORD: app@123
+  server:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: project_server
+    ports:
+      - '3000:3000'
+    depends_on:
+      - db
+    environment:
+      - HTTP_BASIC_USER=app
+      - HTTP_BASIC_PASS=app@123
+    volumes:
+      - ./backend/src:/app/src
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: project_frontend
+    ports:
+      - '5173:5173'
+    depends_on:
+      - server
+    volumes:
+      - ./frontend:/app
