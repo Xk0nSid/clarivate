@@ -1,0 +1,300 @@
+openapi: 3.0.3
+info:
+  title: Clavanate.paw
+  description: ''
+  version: 1.0.0
+  contact:
+    name: Siddharth Yadav
+    email: siddharth_yadav@outlook.com
+servers:
+  - url: http://localhost:3000/
+    description: ''
+paths:
+  /users/:
+    get:
+      summary: Get All Users
+      description: ''
+      operationId: 8bb0d0fa-a3d7-4c42-95ac-6733b8880be5
+      parameters:
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+            default: Basic YXBwOmFwcEAxMjM=
+            description: ''
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  errors:
+                    type: string
+                    example: []
+                  data:
+                    type: object
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        first_name:
+                          type: string
+                        last_name:
+                          type: string
+                        email:
+                          type: string
+                          format: email
+                        organization:
+                          type: string
+                        created_at:
+                          type: string
+                          format: date-time
+          headers:
+            Connection:
+              description: ''
+              schema:
+                type: string
+                example: close
+            Content-Type:
+              description: ''
+              schema:
+                type: string
+                example: application/json; charset=utf-8
+            X-Powered-By:
+              description: ''
+              schema:
+                type: string
+                example: Express
+            Etag:
+              description: ''
+              schema:
+                type: string
+                example: W/"ab-YrFFVUC4iKYLgslgdgOnUvtuzVY"
+            Date:
+              description: ''
+              schema:
+                type: string
+                example: Wed, 24 Apr 2024 13:36:55 GMT
+            Content-Length:
+              description: ''
+              schema:
+                type: string
+                example: '171'
+            Access-Control-Allow-Origin:
+              description: ''
+              schema:
+                type: string
+                example: '*'
+      security: []
+    post:
+      summary: Create New User
+      description: ''
+      operationId: b3c393a2-44fb-4788-9cfe-09283ef9807c
+      parameters:
+        - name: Authorization
+          in: header
+          schema:
+            type: string
+            default: Basic YXBwOmFwcEAxMjM=
+            description: ''
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+            default: application/json; charset=utf-8
+            description: ''
+      requestBody:
+        description: ''
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  example: sid@yadav.com
+                organization:
+                  type: string
+                  example: org1
+                last_name:
+                  type: string
+                  example: Yadav
+                first_name:
+                  type: string
+                  example: Sid
+        required: true
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  errors:
+                    type: string
+                    example: []
+                  data:
+                    type: object
+                    properties:
+                      first_name:
+                        type: string
+                        example: Sid
+                      last_name:
+                        type: string
+                        example: Yadav
+                      email:
+                        type: string
+                        example: sid@yadav.com
+                      organization:
+                        type: string
+                        example: org1
+                      id:
+                        type: integer
+                        format: int64
+                        example: 6
+                      created_at:
+                        type: string
+                        example: '2024-04-23T20:34:34.769Z'
+          headers:
+            Connection:
+              description: ''
+              schema:
+                type: string
+                example: close
+            Content-Type:
+              description: ''
+              schema:
+                type: string
+                example: application/json; charset=utf-8
+            X-Powered-By:
+              description: ''
+              schema:
+                type: string
+                example: Express
+            Etag:
+              description: ''
+              schema:
+                type: string
+                example: W/"a9-cDfq/kNfgPSJmEFcijwUFURnezI"
+            Date:
+              description: ''
+              schema:
+                type: string
+                example: Wed, 24 Apr 2024 02:04:34 GMT
+            Content-Length:
+              description: ''
+              schema:
+                type: string
+                example: '169'
+            Access-Control-Allow-Origin:
+              description: ''
+              schema:
+                type: string
+                example: '*'
+      security: []
+  /users/1/:
+    get:
+      summary: Get a Single User
+      description: ''
+      operationId: 4bb8cb0f-be88-4368-b290-33ca24541c8f
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  errors:
+                    type: string
+                    example: []
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        format: int64
+                        example: 1
+                      first_name:
+                        type: string
+                        example: Sid
+                      last_name:
+                        type: string
+                        example: Yadav
+                      email:
+                        type: string
+                        example: sid@yadav.com
+                      organization:
+                        type: string
+                        example: org1
+                      created_at:
+                        type: string
+                        example: '2024-04-23T19:56:46.485Z'
+          headers:
+            Connection:
+              description: ''
+              schema:
+                type: string
+                example: close
+            Content-Type:
+              description: ''
+              schema:
+                type: string
+                example: application/json; charset=utf-8
+            X-Powered-By:
+              description: ''
+              schema:
+                type: string
+                example: Express
+            Etag:
+              description: ''
+              schema:
+                type: string
+                example: W/"a9-YuYvYvVgPY3d/AByFmPfljX2pYQ"
+            Date:
+              description: ''
+              schema:
+                type: string
+                example: Wed, 24 Apr 2024 01:32:08 GMT
+            Content-Length:
+              description: ''
+              schema:
+                type: string
+                example: '169'
+            Access-Control-Allow-Origin:
+              description: ''
+              schema:
+                type: string
+                example: '*'
+      security: []
+    delete:
+      summary: Delete User
+      description: ''
+      operationId: 9d2904c2-e098-4f5a-839c-c411d4889525
+      parameters:
+        - name: Content-Type
+          in: header
+          schema:
+            type: string
+            default: application/json; charset=utf-8
+            description: ''
+      responses:
+        '204':
+          description: ''
+          content:
+            text/plain:
+              example:
+                value: {}
+      security: []
+components: {}
